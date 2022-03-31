@@ -9,5 +9,11 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "react-calendar": "^3.7.0",
+    "react-radio-group": "^3.0.3",
+    "react-router-dom": "^6.2.2"
   }
 }

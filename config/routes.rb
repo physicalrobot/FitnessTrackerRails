@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :workouts
+  resources :days
+  resources :routines
+  # resources :day_workout 
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
