@@ -32,11 +32,11 @@ function ProfileInfo({user,setUser,handleLogout}) {
             <div className="Info">Male <br></br> 170lbs </div>
 
             {user ? (
-          <button onClick={handleLogoutClick}>Logout</button>
+          <button className='logoutbutt' onClick={handleLogoutClick}>Logout</button>
         ) : (
           <>
-            <Link to="/signup">Signup</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/login"><button className='loginbutt'>Login</button></Link>
+            <Link to="/signup"><button className='signbutt'>Sign Up!</button></Link>
           </>
         )}
         </div>
