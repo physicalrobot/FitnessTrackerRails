@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   resources :days
   resources :routines
   # resources :day_workout 
+
+
+
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+
+  post "/signup", to: "users#create"
+  get "/me", to: "users#show"
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

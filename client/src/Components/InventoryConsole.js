@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import EditWorkout from './EditWorkout';
 import moment from 'moment';
@@ -15,7 +15,15 @@ setCatagorizedWorkouts,postRoutine}) {
 
 
 
-
+    // useEffect(() => {
+    //       // });
+    
+    //     fetch("/days")
+    //       .then((r) => r.json())
+    //       .then((wrk) => {
+    //         setCatagorizedWorkouts(wrk)
+    //       })
+    //   }, [catagorizedworkouts]);
 
     function addworkRoutine(count) {
         setWorkroutines([...workroutines, count])
@@ -25,6 +33,12 @@ setCatagorizedWorkouts,postRoutine}) {
     function handleDelete() {
         fetch(`/workouts/${id}`, {
             method: "DELETE",
+        })
+        
+        fetch("/days")
+        .then((r) => r.json())
+        .then((wrk) => {
+            setCatagorizedWorkouts(wrk)
         });
         handleDeleteClick(id)
     }
@@ -107,7 +121,7 @@ setCatagorizedWorkouts,postRoutine}) {
             })
                 .then((r) => r.json())
                 .then(setCounter(workout.name))
-                .then(fetch("days")
+                .then(fetch("/days")
                     .then((r) => r.json())
                     .then((wrk) => {
                         setCatagorizedWorkouts(wrk)
