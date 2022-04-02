@@ -79,7 +79,75 @@ input[type="radio"] {
   top: 30px;
 }
 
-/* Ellipse 23 */
+/* Login screen */
+
+.logintitletext {
+  position: absolute;
+  top: 40px;
+  left: 35%;
+  font-family: "Lobster", cursive;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 300px;
+  line-height: 29px;
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+}
+
+.loginstuff {
+  position: relative;
+  top: 650px;
+  left: 40%;
+}
+
+#username {
+  position: relative;
+  /* left: 650px; */
+  size: 40px;
+  color: white;
+  /* top: 730px; */
+}
+#usernametextbox {
+  position: relative;
+  left: 180px;
+  top: -55px;
+  height: 30px;
+  width: 250px;
+}
+
+.passwordstuff {
+  position: relative;
+  top: 640px;
+  left: 40%;
+}
+
+#password {
+  position: relative;
+  /* left: 650px; */
+  size: 40px;
+  color: white;
+  /* top: 730px; */
+}
+#passwordtextbox {
+  position: relative;
+  left: 180px;
+  top: -55px;
+  height: 30px;
+  width: 250px;
+}
+
+.otherloginbutton {
+  position: absolute;
+  width: 150px;
+  height: 70px;
+  left: 48%;
+  top: 860px;
+  color: white;
+  font-size: large;
+  background: linear-gradient(0deg, #169c9c, #169c9c);
+  border-radius: 10px;
+}
 
 .Name {
   position: absolute;

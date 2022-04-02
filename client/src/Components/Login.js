@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import '../App.css';
 
 
 function Login({ user,setUser }) {
@@ -30,24 +31,32 @@ function Login({ user,setUser }) {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <label htmlFor="username">Username</label>
+          
+          <h1 className = "logintitletext">Login</h1>
+          <div className = "loginstuff">
+          <h1 
+                      id="username"
+
+         >Username</h1>
           <input
             type="text"
-            id="username"
+            id="usernametextbox"
+            className="username"
             autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label htmlFor="password">Password</label>
+          </div>
+          <div className = "passwordstuff">
+          <h1 htmlFor="password" id='password'>Password</h1>
           <input
             type="password"
-            id="password"
+            id="passwordtextbox"
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Login</button>
+          /></div>
+          <button className = "otherloginbutton" type="submit">Login</button>
         </form>
       </div>
     );
