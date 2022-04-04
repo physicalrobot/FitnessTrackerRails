@@ -7,7 +7,7 @@ import { RadioGroup, Radio } from 'react-radio-group'
 
 
 
-function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
+function NewWorkout({ nework, setnework, dates, date, handleAddWorkout, handleAddDate }) {
 
     const [name, setName] = useState('');
     const [body, setBody] = useState('');
@@ -51,7 +51,9 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
     }
 
 
-
+    function flipNew(){
+        setnework(!nework)
+    }
 
 
     function handleSubmit(e) {
@@ -74,6 +76,8 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
                 handleAddWorkout(workoutData)
             })
             .then(checked ? handleDateCheck : console.log('not save in day'))
+
+            flipNew()
     }
 
 
@@ -122,8 +126,8 @@ function NewWorkout({ dates, date, handleAddWorkout, handleAddDate }) {
                         <button type="submit" className="AddWorkoutButton" >Add<span></span>
                         </button>
 
-                        <Link to="/"><button className="CancelAddWorkoutButton">X<span></span>
-                        </button></Link>
+                        <button onClick = {flipNew} className="CancelAddWorkoutButton">X<span></span>
+                        </button>
                     </div>
 
                 </div>

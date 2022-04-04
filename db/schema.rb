@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_04_01_164911) do
     t.string "name"
     t.integer "workout_id"
     t.integer "day_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

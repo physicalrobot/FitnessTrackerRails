@@ -29,6 +29,8 @@ function Home({user, setUser, handleLogout}) {
   const [search, setSearch] = useState("");
   const [catagorizedworkouts, setCatagorizedWorkouts] = useState()
 
+  const [nework, setnework] = useState(false)
+
 
   const [workoutonday, setWorkoutOnDay] = useState()
 
@@ -40,6 +42,7 @@ function Home({user, setUser, handleLogout}) {
   const [checked, setChecked] = useState(false);
 
   const [routines, setRoutines] = useState([])
+  // const [routinecont, setRoutinecont] = useState([])
 
 
   function addtoCount(stuff) {
@@ -74,7 +77,9 @@ function Home({user, setUser, handleLogout}) {
       var obj = catagorizedworkouts.find(o => o.name === date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" }));
 
       let closer = obj.routines;
-      let cloyster = closer.filter(o => o.workout);
+      console.log(closer)
+      let cloyster = closer.filter(o => o.user_id === user.id);
+      // setRoutinecont(cloyster)
 
       var nameArray = cloyster.map(function (el) { return el.workout; });
       let wrkouttwrk = nameArray.map(function (el) { return el.name; });
@@ -173,11 +178,13 @@ function Home({user, setUser, handleLogout}) {
     <div className="App">
       <header className="App-header"></header>
       <ProfileInfo setUser={setUser} user={user} handleLogout={handleLogout} />
-        <Routes>
-        {/* <Route exact path="/" element={<ProfileInfo user={user} />} /> */}
-        <Route path="/new-workout" element={<NewWorkout handleAddWorkout={handleAddWorkout} handleAddDate={handleAddDate} date={date} dates={dates} />} />
 
-        </Routes>
+      {nework ? (<NewWorkout handleAddWorkout={handleAddWorkout} handleAddDate={handleAddDate} date={date} dates={dates} nework={nework} setnework={setnework} />): (console.log('no new'))}
+        {/* <Routes> */}
+        {/* <Route exact path="/" element={<ProfileInfo user={user} />} /> */}
+        {/* <Route path="/new-workout" element={} /> */}
+
+        {/* </Routes> */}
 
       <div className="Header">
         <div className="HeaderText">Back at it again.</div>
@@ -187,7 +194,10 @@ function Home({user, setUser, handleLogout}) {
       <div className="Calendar">
         <Calendar onChange={changeDate} value={date} />
       </div>
-      <TodayWorkout date={date}
+      <TodayWorkout 
+      // routinecont={routinecont} 
+      setCatagorizedWorkouts={setCatagorizedWorkouts}
+      user = {user} date={date}
         workouts={workouts}
         onWorkoutDelete={handleDeleteWorkout}
 
@@ -202,7 +212,7 @@ function Home({user, setUser, handleLogout}) {
 
       <ProfileInfo user={user} setUser={setUser} handleLogout={handleLogout} />
       <Dictionary dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} onUpdateWorkout={handleUpdateWorkout} onWorkoutDelete={handleDeleteWorkout} setSearch={setSearch} workouts={displayedWorkouts} wkout={workouts} setWorkouts={setWorkouts}
-        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory} listwrkout={listwrkout}/>
+        catagorizedworkouts={catagorizedworkouts} count={count} setCounter={addtoCount} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory} listwrkout={listwrkout} nework={nework} setnework ={setnework} user={user}/>
 {/*               
       <Home dates={dates} date={date} setDates={setDates} search={search} handleAddDate={handleAddDate} handleUpdateWorkout={handleUpdateWorkout} handleDeleteWorkout={handleDeleteWorkout} setSearch={setSearch} workouts={workouts} setWorkouts={setWorkouts}
         catagorizedworkouts={catagorizedworkouts} setCatagorizedWorkouts={setCatagorizedWorkouts} handleAddCategory={handleAddCategory} listwrkout={listwrkout} handleAddWorkout={handleAddWorkout} user={user} /> */}

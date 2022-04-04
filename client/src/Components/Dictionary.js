@@ -8,13 +8,9 @@ import { v4 as uuidv4 } from 'uuid';
 import InventoryConsole from './InventoryConsole';
 
 
-function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, setCounter, postRoutine, catagorizedworkouts, setCatagorizedWorkouts }) {
+function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWorkoutDelete, setSearch, workouts, setWorkouts, setCounter, postRoutine, catagorizedworkouts, setCatagorizedWorkouts, nework, setnework, user }) {
 
     const [groupedworkouts, setGroupedworkouts] = useState([workouts]);
-
-
-
-
 
     function WorkoutSearch(e) {
         setSearch(e.target.value)
@@ -23,40 +19,43 @@ function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWor
 
 
     function All() {
-        fetch("http://localhost:9292/workouts")
+        fetch("/workouts")
             .then((r) => r.json())
             .then((workouts) => setWorkouts(workouts))
     }
 
 
     function Arms() {
-        fetch("http://localhost:9292/workouts/arms")
+        fetch("/workouts")
             .then((r) => r.json())
-            .then((workouts) => setWorkouts(workouts))
+            .then((workouts) => setWorkouts(workouts.filter(r => r.group === 'arms')))
     };
 
 
     function Cardio() {
-        fetch("http://localhost:9292/workouts/cardio")
+        fetch("/workouts")
             .then((r) => r.json())
-            .then((workouts) => setWorkouts(workouts))
+            .then((workouts) => setWorkouts(workouts.filter(r => r.group === 'cardio')))
     };
 
 
     function Yoga() {
-        fetch("http://localhost:9292/workouts/yoga")
+        fetch("/workouts")
             .then((r) => r.json())
-            .then((workouts) => setWorkouts(workouts))
+            .then((workouts) => setWorkouts(workouts.filter(r => r.group === 'yoga')))
     };
 
 
     function Core() {
-        fetch("http://localhost:9292/workouts/core")
+        fetch("/workouts")
             .then((r) => r.json())
-            .then((workouts) => setWorkouts(workouts))
+            .then((workouts) => setWorkouts(workouts.filter(r => r.group === 'core')))
+
     };
 
-
+    function flipNew(){
+        setnework(!nework)
+    }
 
     return (
 
@@ -76,8 +75,10 @@ function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWor
 
             <div className='searchandnewbutton'>
                 <button className="SearchButton" onClick={All}>All</button>
-                <Link to="/new-workout"><button className="AddNewWorkout"> New<span></span>
-                </button></Link>
+                {/* <Link to="/new-workout"> */}
+                    <button className="AddNewWorkout" onClick={flipNew}> New<span></span>
+                </button>
+                {/* </Link> */}
             </div>
 
             <div className='Buttons'>
@@ -136,6 +137,7 @@ function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWor
                 <ul key={uuidv4()}>
                     {workouts.map((workout) => (
                         <InventoryConsole
+                            user = {user}
                             dates={dates}
                             date={date}
                             workout={workout}

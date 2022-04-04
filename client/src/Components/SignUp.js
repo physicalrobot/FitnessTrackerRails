@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 import Home from "./Home";
@@ -40,32 +40,39 @@ function SignUp({ setUser }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
-        <label htmlFor="username">Username</label>
+      <h1 className='signuptitletext'>Sign Up</h1>
+
+        <div className="signupstuff">
+        <h1 id="username">Username</h1>
         <input
           type="text"
-          id="username"
+          className="username"
+          id="usernametextbox"
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        <h1 id="password">Password</h1>
         <input
           type="password"
-          id="password"
+          id="passwordtextbox"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
-        <label htmlFor="password">Password Confirmation</label>
+        <h1
+        className="passwordconfirmation" htmlFor="password">Password Confirmation</h1>
         <input
           type="password"
-          id="password_confirmation"
+          id="passwordconfirmationtextbox"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button type="submit">Sign Up</button>
+        </div>
+        <button className='signbutt' id='signsignup' type="submit">Sign Up</button>
+
+        <Link to="/login"><button className='loginbutt' id='signlogin'>Login</button></Link>
       </form>
 
   

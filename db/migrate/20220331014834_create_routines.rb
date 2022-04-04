@@ -4,6 +4,7 @@ class CreateRoutines < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :workout_id
       t.integer :day_id
+      t.integer :user_id
       t.timestamps
     end
   end

@@ -6,7 +6,7 @@ class RoutinesController < ApplicationController
     end
 
     def create 
-        routines = Routine.create(name: params[:name], day_id: params[:day_id], workout_id: params[:workout_id] )
+        routines = Routine.create(name: params[:name], day_id: params[:day_id], workout_id: params[:workout_id], user_id: params[:user_id] )
         render json: routines
     end
 

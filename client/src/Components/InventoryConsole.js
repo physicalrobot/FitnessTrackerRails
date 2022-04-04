@@ -4,7 +4,7 @@ import EditWorkout from './EditWorkout';
 import moment from 'moment';
 
 function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setCounter,catagorizedworkouts,
-setCatagorizedWorkouts,postRoutine}) {
+setCatagorizedWorkouts,postRoutine, user}) {
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
@@ -93,6 +93,7 @@ setCatagorizedWorkouts,postRoutine}) {
 
 
 
+
     function postRoutine() {
         var dayindex = (dates.map(function (e) { return e.name; }).indexOf(currentDate) + 1);
 
@@ -116,7 +117,9 @@ setCatagorizedWorkouts,postRoutine}) {
                 body: JSON.stringify({
                     day_id: dayindex,
                     workout_id: workoutindex,
-                    name: rndate
+                    name: rndate,
+                    user_id:user.id
+                    
                 }),
             })
                 .then((r) => r.json())
