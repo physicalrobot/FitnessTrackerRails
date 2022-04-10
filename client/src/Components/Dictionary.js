@@ -17,7 +17,6 @@ function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWor
     }
 
 
-
     function All() {
         fetch("/workouts")
             .then((r) => r.json())
@@ -31,7 +30,7 @@ function Dictionary({ handleAddDate, dates, date, search, onUpdateWorkout, onWor
             .then((workouts) => setWorkouts(workouts.filter(r => r.group === 'arms')))
     };
 
-
+    
     function Cardio() {
         fetch("/workouts")
             .then((r) => r.json())
