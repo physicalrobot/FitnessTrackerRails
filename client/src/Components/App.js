@@ -15,6 +15,8 @@ function App() {
     .then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+      }else{
+        navigate("/signup")
       }
     //   .then((r) => r.json())
     // })
@@ -29,37 +31,33 @@ function App() {
   }
   
 
-  function runorder () {
-    user ? (
-      <Routes>
-        <Route exact path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout}/>} />
-      </Routes>
-    ) : (
-      <Routes>
-        <Route exact path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
+  // function runorder () {
+  //   user ? (
+  //     <Routes>
+  //       <Route exact path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout}/>} />
+  //     </Routes>
+  //   ) : (
+  //     <Routes>
+  //       <Route exact path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
 
-        <Route exact path="/login" element={<Login setUser={setUser} user={user} />} />
+  //       <Route exact path="/login" element={<Login setUser={setUser} user={user} />} />
 
-        <Route exact path="/" element={<Home />} />
+  //       <Route exact path="/" element={<Home />} />
 
-      </Routes>
-    )
-  }
+  //     </Routes>
+  //   )
+  // }
 
   return (
     <>
         {  user ? (
       <Routes>
-        <Route exact path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout}/>} />
+        <Route  path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout}/>} />
       </Routes>
     ) : (
       <Routes>
-        <Route  path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
-
         <Route  path="/login" element={<Login setUser={setUser} user={user} />} />
-
-        {/* <Route exact path="/" element={<Home />} /> */}
-
+        <Route  path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
       </Routes>
     )}
     </>

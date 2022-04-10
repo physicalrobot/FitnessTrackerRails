@@ -63,7 +63,6 @@ function Home({user, setUser, handleLogout}) {
     setDate(e)
   }
 
-
   function listwrkout(catagorizedworkouts) {
     var wrkoutdate = date.toLocaleDateString('en-us', { day: "numeric", year: "numeric", month: "short" })
 
@@ -102,7 +101,6 @@ function Home({user, setUser, handleLogout}) {
     //   }
     // });
 
-
     fetch("/workouts")
       .then((r) => r.json())
       .then((workouts) => setWorkouts(workouts))
@@ -119,7 +117,6 @@ function Home({user, setUser, handleLogout}) {
       .then((wrk) => {
         setCatagorizedWorkouts(wrk)
       })
-
 
     fetch("/routines")
     .then((r) => r.json())
