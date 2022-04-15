@@ -386,12 +386,7 @@ input[type="radio"] {
   margin: 0;
 }
 
-.Calendar {
-  position: absolute;
-  height: 651px;
-  left: 300px;
-  top: 210px;
-}
+
 
 .TodayWorkout {
   position: absolute;
