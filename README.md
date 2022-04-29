@@ -1,7 +1,14 @@
-##Workout Fitness Tracker
+# Fitness Tracker
 
-#Description
+## Learning Goals
 
-This is a program designed to track your workout routines. It demonstrates my ability to connect a frontend written in React Js to a backend database written in Ruby on Rails. It includes a user authentication feature as well.
+- Build a web basic API with Ruby on Rails and Active Record to support a React
+  frontend
 
-After signing in you, you can select a date on the calendar, and add workouts from the list of recorded workouts below. A more in depth explanation of the project and how its made can be found here: https://physicalrobot.github.io/code_blog/portfolio/fitness-app-with-user-authentication/
+## Introduction
+
+This is app tracks the workouts you plan to do at the gym. You can create, edit, delete and schedule workouts to specific days on the calendar.
+
+The focus of this project is **building a Rails API backend** that uses
+**Active Record** to access and persist data in a database, which will be used
+by a separate **React frontend** that interacts with the database via the API.A more in depth explanation of the project and how its made can be found here: https://physicalrobot.github.io/code_blog/portfolio/fitness-app-with-user-authentication/
