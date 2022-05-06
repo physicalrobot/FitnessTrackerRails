@@ -13,7 +13,6 @@ class RoutinesController < ApplicationController
     
     def destroy 
         routine = Routine.find(params[:id])
-        # routine.delete_if { |hash| id.include?(hash[:id]) }
         routine.destroy 
         render json: routine
     end

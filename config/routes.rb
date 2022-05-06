@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :routines
   # resources :day_workout 
 
+  get "/backwards", to: "workouts#backorder"
 
+  get "/arms", to: "workouts#arms"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

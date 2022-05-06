@@ -23,5 +23,15 @@ class WorkoutsController < ApplicationController
         render json: workout
     end
 
+    def backorder
+        workouts = Workout.order(name: :desc)
+        render json: workouts
+    end
 
+
+    def arms 
+        fivearms = Workout.arms
+        render json: fivearms
+
+    end
 end

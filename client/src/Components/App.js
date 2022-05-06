@@ -12,28 +12,28 @@ function App() {
   useEffect(() => {
     // auto-login
     fetch("/me")
-    .then((r) => {
-      if (r.ok) {
-      r.json().then((user) => setUser(user))
-      
-        // console.log(r.js)
-        // setUser(r)
-        // r.text().then(console.log)
-      }else{
-        navigate("/signup")
-      }
-    //   .then((r) => r.json())
-    // })
-    });
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user))
+
+          // console.log(r.js)
+          // setUser(r)
+          // r.text().then(console.log)
+        } else {
+          navigate("/signup")
+        }
+        //   .then((r) => r.json())
+        // })
+      });
   }, []);
 
 
 
   function handleLogout() {
     setUser(null);
-    navigate ("/signup")
+    navigate("/signup")
   }
-  
+
 
   // function runorder () {
   //   user ? (
@@ -54,16 +54,16 @@ function App() {
 
   return (
     <>
-        {  user ? (
-      <Routes>
-        <Route  path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout}/>} />
-      </Routes>
-    ) : (
-      <Routes>
-        <Route  path="/login" element={<Login setUser={setUser} user={user} />} />
-        <Route  path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
-      </Routes>
-    )}
+      {user ? (
+        <Routes>
+          <Route path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout} />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/login" element={<Login setUser={setUser} user={user} />} />
+          <Route path="/signup" element={<SignUp user={user} setUser={setUser} handleLogout={handleLogout} />} />
+        </Routes>
+      )}
     </>
   );
 }

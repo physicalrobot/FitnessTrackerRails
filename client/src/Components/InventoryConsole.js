@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import EditWorkout from './EditWorkout';
 import moment from 'moment';
 
-function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setCounter,catagorizedworkouts,
-setCatagorizedWorkouts,postRoutine, user}) {
+function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpdateWorkout, workout, setCounter, catagorizedworkouts,
+    setCatagorizedWorkouts, postRoutine, user }) {
 
     const { id, name, body, group } = workout
     const [isEditing, setIsEditing] = useState(false);
@@ -15,15 +15,6 @@ setCatagorizedWorkouts,postRoutine, user}) {
 
 
 
-    // useEffect(() => {
-    //       // });
-    
-    //     fetch("/days")
-    //       .then((r) => r.json())
-    //       .then((wrk) => {
-    //         setCatagorizedWorkouts(wrk)
-    //       })
-    //   }, [catagorizedworkouts]);
 
     function addworkRoutine(count) {
         setWorkroutines([...workroutines, count])
@@ -31,16 +22,22 @@ setCatagorizedWorkouts,postRoutine, user}) {
 
 
     function handleDelete() {
+
+
         fetch(`/workouts/${id}`, {
             method: "DELETE",
-        })
-        
+        }).then(fetch("/days")
+            .then((r) => r.json())
+            .then((wrk) => {
+                setCatagorizedWorkouts(wrk)
+            }))
+            .then(handleDeleteClick(id))
+
         fetch("/days")
-        .then((r) => r.json())
-        .then((wrk) => {
-            setCatagorizedWorkouts(wrk)
-        });
-        handleDeleteClick(id)
+            .then((r) => r.json())
+            .then((wrk) => {
+                setCatagorizedWorkouts(wrk)
+            });
     }
 
     function handleUpdate(updatedWorkout) {
@@ -75,7 +72,9 @@ setCatagorizedWorkouts,postRoutine, user}) {
             })
                 .then((r) => r.json())
                 .then(dateData => handleAddDate(dateData))
+
         }
+
     }
 
 
@@ -85,7 +84,7 @@ setCatagorizedWorkouts,postRoutine, user}) {
         setChecked(!checked)
     }
 
-    
+
     function handleAddRoutine(stuff) {
         setCatagorizedWorkouts([...catagorizedworkouts, stuff])
         console.log(catagorizedworkouts)
@@ -109,6 +108,12 @@ setCatagorizedWorkouts,postRoutine, user}) {
 
         )) {
 
+            fetch("/days")
+                .then((r) => r.json())
+                .then((wrk) => {
+                    setCatagorizedWorkouts(wrk)
+                })
+
             fetch("/routines", {
                 method: "POST",
                 headers: {
@@ -118,8 +123,8 @@ setCatagorizedWorkouts,postRoutine, user}) {
                     day_id: dayindex,
                     workout_id: workoutindex,
                     name: rndate,
-                    user_id:user.id
-                    
+                    user_id: user.id
+
                 }),
             })
                 .then((r) => r.json())
@@ -143,7 +148,7 @@ setCatagorizedWorkouts,postRoutine, user}) {
             <h2 className='listHeaders'>{name}
 
                 <button className='trashcan'
-                    onClick={handleDelete}
+                    onClick={() => handleDelete()}
                 >
                     <span role="img" aria-label="delete">
                         🗑
@@ -168,8 +173,8 @@ setCatagorizedWorkouts,postRoutine, user}) {
 
             <p
                 className='addworkoutDateDictionary'>
-                add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={onDateCheckbox} 
-                checked={checked}
+                add to date: <b>{moment(date).format('MMMM Do YYYY')}</b> <input type='checkbox' onChange={onDateCheckbox}
+                    checked={checked}
                 ></input>
             </p>
 
