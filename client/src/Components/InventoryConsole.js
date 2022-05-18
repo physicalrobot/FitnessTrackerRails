@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer,useState, useEffect } from 'react';
 
 import EditWorkout from './EditWorkout';
 import moment from 'moment';
@@ -12,6 +12,7 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
     const [checked, setChecked] = useState(false);
     const [workroutines, setWorkroutines] = useState([])
 
+    const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
 
 
 
@@ -139,6 +140,8 @@ function InventoryConsole({ dates, handleAddDate, date, handleDeleteClick, onUpd
             console.log("the routine doesn't exist");
         }
         console.log(workroutines)
+        forceUpdate()
+
     }
 
 
